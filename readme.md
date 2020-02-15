@@ -15,4 +15,4 @@
 
 > Reference: https://www.udemy.com/course/the-web-developer-bootcamp
 
-![Image of Restful Routes](https://github.com/YingzheHeBetty/Restful-Blog-App/blob/master/Other/Capture.PNG)
+![Image of Restful Routes](https://github.com/YingzheHeBetty/Restful-Blog-App/blob/master/Other/Capture.PNG =250x)
