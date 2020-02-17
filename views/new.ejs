@@ -3,10 +3,14 @@
 
 <div class="ui main text container segment">
 	<div class="ui huge header"> New Blog</div>
-	<form class="ui form" action="/blogs" method="POST">
+	<form class="ui form" action="/blogs" method="POST" >
 		<div class="field">
 			<label>Title</label>
-			<input type="text" name="blog[title]" placeholder="title">
+			<input type="text" name="blog[title]" placeholder="title" required="required">
+		</div>
+		<div class="field">
+			<label>Author</label>
+			<input type="text" name="blog[author]" placeholder="author" required="required">
 		</div>
 		<div class="field">
 			<label>Image</label>
@@ -14,7 +18,7 @@
 		</div>
 		<div class="field">
 			<label>Blog Content</label>
-			<textarea name="blog[body]"></textarea>
+			<textarea name="blog[body]" required="required"></textarea>
 		</div>
 		
 		<input class="ui orange basic button" type="Submit">
