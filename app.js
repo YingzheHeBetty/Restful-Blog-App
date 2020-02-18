@@ -2,7 +2,7 @@ var bodyParser = require("body-parser");
 var mongoose   = require("mongoose");
 var express    = require("express");
 var app        = express();
-
+var methodOverride = require("method-override");
 //App Config
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
@@ -13,6 +13,7 @@ mongoose.connect("mongodb://localhost/restful_blog_app");
 app.set("view engine", "ejs");
 app.use(express.static("public")); // custome style sheets
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(methodOverride("_method"));
 
 // Mongoose/Model Config
 //define Schema
@@ -74,6 +75,29 @@ app.get("/blogs/:id", function(req, res){
 	})
 })
 
+/Edit route
+app.get("/blogs/:id/edit", function(req,res){
+	//find Blog by id and execute
+	Blog.findById(req.params.id, function(err, foundBlog){
+		if(err){
+			res.redirect("/blogs");
+		} else {
+			res.render("edit", {blog: foundBog});
+		}		
+	});
+})
+
+// Update route
+
+app.put("/blogs/:id", function(req,res){
+	Blog.findByIdAndUpdate(req.params.id, req.body.blog, function(err, updatedBlog){
+		if(err){
+			res.redirect("/blogs");
+		}else {
+			res.redirect("/blogs/" + req.params.id);
+		}
+	})
+})
 
 
 app.listen(3000, function(){
