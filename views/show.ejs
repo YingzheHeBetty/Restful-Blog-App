@@ -4,15 +4,16 @@
 	<div class="ui huge header"> <%= blog.title %></div>
 	<div class="ui top attached ">
 		<div class="item">
-			<img class="ui centered rounded iamge" src="<%= blog.image%>">
 			<div class="content">
 				<h2><%= blog.author%></h2>
 				<span><%= blog.created.toDateString() %></span>
 			</div>
+			<img class="ui fluid medium centered rounded image" src="<%= blog.image%>">
+			
 			<div class="description">
 				<p><%- blog.body %></p> 
 			</div>
-			<a class= "ui green button" href="/blogs/<%=blog._id %>/edit">Edit</a>
+			<a class= "f1 ui green button" href="/blogs/<%=blog._id %>/edit">Edit</a>
 			<form class="f1" action="/blogs/<%=blog._id %>?_method=DELETE" method="POST">
 				<button class="ui red button">Delete</button>
       		</form>
