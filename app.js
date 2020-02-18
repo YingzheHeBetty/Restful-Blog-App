@@ -75,14 +75,14 @@ app.get("/blogs/:id", function(req, res){
 	})
 })
 
-/Edit route
+//Edit route
 app.get("/blogs/:id/edit", function(req,res){
 	//find Blog by id and execute
 	Blog.findById(req.params.id, function(err, foundBlog){
 		if(err){
 			res.redirect("/blogs");
 		} else {
-			res.render("edit", {blog: foundBog});
+			res.render("edit", {blog: foundBlog});
 		}		
 	});
 })
@@ -98,6 +98,19 @@ app.put("/blogs/:id", function(req,res){
 		}
 	})
 })
+
+
+//Delete route
+app.delete("/blogs/:id", function(req, res){
+	Blog.findByIdAndRemove(req.params.id, function(err){
+		if(err){
+			res.redirect("/blogs");
+		}else {
+			res.redirect("/blogs");
+		}
+	})
+})
+
 
 
 app.listen(3000, function(){
